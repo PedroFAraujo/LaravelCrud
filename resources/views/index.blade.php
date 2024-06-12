@@ -29,6 +29,37 @@
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
+
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (count($contato) > 0)
+                    @foreach ($contato as $cont)
+                        <tr>
+                            <th>{{ $cont->id }}</th>
+                            <th>{{ $cont->nome }}</th>
+                            <th>{{ $cont->telefone }}</th>
+                            <th>{{ $cont->email }}</th>
+                            <th><a href="/editar/{{ $cont->id }}" class="btn btn-primary">Editar</a>
+                                <a href="/excluir/{{ $cont->id }}" class="btn btn-danger">Excluir</a>
+                            </th>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <th>Sem registros!</th>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
     </div>
 </body>
 
